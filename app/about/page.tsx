@@ -7,9 +7,6 @@ import {
   Target, 
   Zap, 
   Shield,
-  Users,
-  Trophy,
-  Globe,
   TrendingUp
 } from "lucide-react"
 
@@ -53,52 +50,6 @@ export default function AboutPage() {
             </div>
             <div className="bg-emerald-100 rounded-3xl p-8 flex items-center justify-center">
               <Target className="w-48 h-48 text-emerald-600" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Company Stats */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Making an Impact</h2>
-            <p className="text-xl text-gray-600">
-              Our platform is trusted by agencies and brands worldwide
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">500+</div>
-              <div className="text-gray-600">Active Clients</div>
-            </div>
-            
-            <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">10K+</div>
-              <div className="text-gray-600">Deals Created</div>
-            </div>
-            
-            <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">25+</div>
-              <div className="text-gray-600">Countries</div>
-            </div>
-            
-            <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">98%</div>
-              <div className="text-gray-600">Success Rate</div>
             </div>
           </div>
         </div>
