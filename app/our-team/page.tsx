@@ -11,33 +11,33 @@ export default function OurTeamPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
+      <section className="relative py-12 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
             Our Culture &
             <span className="block bg-linear-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
               Core Values
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
             We&apos;re building more than just technology—we&apos;re creating a culture of innovation, transparency, and customer success that drives everything we do.
           </p>
         </div>
       </section>
 
       {/* Company Culture */}
-      <section className="py-20 px-4 bg-emerald-50">
+      <section className="py-12 px-4 bg-emerald-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Culture</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">Our Culture</h2>
             <p className="text-xl text-gray-600">
               Building a team that&apos;s as innovative as our technology
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">What We Believe</h3>
-            <div className="grid md:grid-cols-2 gap-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">What We Believe</h3>
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-emerald-600 rounded-full mt-2 mr-4 shrink-0"></div>
                 <div>
@@ -72,10 +72,10 @@ export default function OurTeamPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-linear-to-r from-emerald-600 to-green-600 text-white">
+      <section className="py-12 px-4 bg-linear-to-r from-emerald-600 to-green-600 text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Experience Our Values in Action</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-3">Experience Our Values in Action</h2>
+          <p className="text-xl mb-6 opacity-90 max-w-2xl mx-auto">
             See how our culture of innovation and simplicity transforms programmatic deal creation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -16,25 +16,25 @@ export default function HowItWorksPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
+      <section className="relative py-12 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
             How Advanced Curation
             <span className="block bg-linear-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
               Works for You
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
             From strategy to live Deal ID in under an hour. Our streamlined process makes programmatic deal creation accessible to everyone.
           </p>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Simple 4-Step Process
             </h2>
             <p className="text-xl text-gray-600">
@@ -42,7 +42,7 @@ export default function HowItWorksPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             <div className="text-center group">
               <div className="w-20 h-20 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg group-hover:shadow-xl transform group-hover:scale-105 transition-all duration-300">
                 1

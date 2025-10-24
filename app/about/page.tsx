@@ -15,30 +15,30 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
+      <section className="relative py-12 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
             Revolutionizing
             <span className="block bg-linear-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
               Programmatic Advertising
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
             We&apos;re democratizing programmatic deal creation with AI-powered tools that make complex DSP operations accessible to everyone.
           </p>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Mission</h2>
+              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
                 We believe programmatic advertising shouldn&apos;t require a team of technical experts. Advanced Curation bridges the gap between sophisticated demand-side platforms and the agencies and brands who need to create effective campaigns quickly.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Our platform transforms what used to take weeks of back-and-forth with DSP specialists into a streamlined, AI-guided process that delivers Deal IDs in under an hour.
               </p>
               <Link href="/how-it-works">
@@ -56,41 +56,41 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">Our Core Values</h2>
             <p className="text-xl text-gray-600">
               The principles that guide everything we do
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-emerald-50 rounded-xl">
-              <div className="w-20 h-20 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center p-6 bg-emerald-50 rounded-xl">
+              <div className="w-20 h-20 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Simplicity</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Simplicity</h3>
               <p className="text-gray-600 leading-relaxed">
                 We make complex programmatic processes simple and accessible, eliminating barriers that prevent teams from creating effective campaigns.
               </p>
             </div>
             
-            <div className="text-center p-8 bg-green-50 rounded-xl">
-              <div className="w-20 h-20 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center p-6 bg-green-50 rounded-xl">
+              <div className="w-20 h-20 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Trust</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Trust</h3>
               <p className="text-gray-600 leading-relaxed">
                 We protect our clients&apos; data and campaigns with enterprise-grade security, ensuring your advertising strategies remain confidential.
               </p>
             </div>
             
-            <div className="text-center p-8 bg-teal-50 rounded-xl">
-              <div className="w-20 h-20 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center p-6 bg-teal-50 rounded-xl">
+              <div className="w-20 h-20 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Innovation</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Innovation</h3>
               <p className="text-gray-600 leading-relaxed">
                 We continuously evolve our AI and machine learning capabilities to stay ahead of the rapidly changing programmatic landscape.
               </p>
@@ -100,18 +100,18 @@ export default function AboutPage() {
       </section>
 
       {/* Technology Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 px-4 bg-gray-50">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="bg-linear-to-br from-emerald-100 to-green-100 rounded-3xl p-8 flex items-center justify-center">
               <Zap className="w-48 h-48 text-emerald-600" />
             </div>
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Cutting-Edge Technology</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Cutting-Edge Technology</h2>
+              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
                 Our platform leverages advanced AI and machine learning to analyze campaign requirements and automatically generate optimal targeting parameters for major DSPs including DV360, The Trade Desk, and Amazon DSP.
               </p>
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-emerald-600 rounded-full mr-3"></div>
                   <span className="text-gray-700">AI-powered targeting optimization</span>
@@ -141,10 +141,10 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-linear-to-r from-emerald-600 to-green-600 text-white">
+      <section className="py-12 px-4 bg-linear-to-r from-emerald-600 to-green-600 text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Campaigns?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-3">Ready to Transform Your Campaigns?</h2>
+          <p className="text-xl mb-6 opacity-90 max-w-2xl mx-auto">
             Join the revolution in programmatic advertising. Create your first Deal ID in under an hour.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -19,7 +19,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50 overflow-hidden">
+      <section className="relative py-12 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-emerald-100/20 to-green-100/20 animate-pulse"></div>
         
         {/* Animated background elements */}
@@ -28,15 +28,15 @@ export default function Home() {
         <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-teal-200/30 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
         
         <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight animate-fade-in">
             <span className="inline-block animate-shimmer bg-linear-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text text-transparent bg-size-[200%_auto]">
               A Real Agentic Deal Desk
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
             Create custom Deal IDs for all media types immediately for free. Launch campaigns in minutes, not weeks. Stop waiting replies to your emails! Start with your first deal today.
           </p>
-          <div className="flex justify-center items-center mb-8 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+          <div className="flex justify-center items-center mb-6 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <Link href="/gate">
               <Button size="lg" className="text-lg px-8 py-4 bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                 <PlusCircle className="w-5 h-5 mr-2" />
@@ -62,10 +62,10 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
               AC is Purpose Built for Media Buyers and Trading Desks
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -73,62 +73,62 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="group text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <Zap className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Agentic Deal Creation</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">Agentic Deal Creation</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
                 Use our powerful tools to create your custom media plan or manually enter your details and we&rsquo;ll take it from there. Get deals live in seconds.
               </p>
             </div>
 
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+            <div className="group text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <Target className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Smart Targeting</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">Smart Targeting</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
                 Reach your ideal customers by location, media type, and DSP with precision. CTV, OLV, Display, and In-App support.
               </p>
             </div>
 
             <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <DollarSign className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Flexible Pricing</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">Flexible Pricing</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
                 No hidden costs or markups. No changes to your current payment process, no new contracts to sign. Just free deal creation.
               </p>
             </div>
 
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+            <div className="group text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <BarChart3 className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Real-Time Analytics</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">Real-Time Analytics</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
                 Track performance, campaign metrics, ROI and more with our comprehensive dashboard.
               </p>
             </div>
 
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+            <div className="group text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <Shield className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Enterprise Security</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">Enterprise Security</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
                 Bank-grade security, encrypted data, and compliance with industry standards. Your deals are safe with us.
               </p>
             </div>
 
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+            <div className="group text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <Clock className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Quick Launch</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors">Quick Launch</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
                 Our intuitive process gets your Deal IDs created and campaigns live in minutes, not days.
               </p>
@@ -140,10 +140,10 @@ export default function Home() {
 
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Why Choose Advanced Curation?
             </h2>
             <p className="text-xl text-gray-600">
@@ -151,9 +151,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-8 rounded-xl">
-              <div className="flex items-center mb-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <div className="flex items-center mb-3">
                 <div className="w-12 h-12 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
                   SC
                 </div>
@@ -167,8 +167,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-xl">
-              <div className="flex items-center mb-4">
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <div className="flex items-center mb-3">
                 <div className="w-12 h-12 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
                   MR
                 </div>
@@ -182,8 +182,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-xl">
-              <div className="flex items-center mb-4">
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <div className="flex items-center mb-3">
                 <div className="w-12 h-12 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
                   JK
                 </div>
@@ -201,10 +201,10 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 px-4 bg-gray-50">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Pricing & Ease of Use
             </h2>
             <p className="text-xl text-gray-600">
@@ -212,12 +212,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Flexible Pricing</h3>
-              <p className="text-gray-600 mb-6">Pay only for what you use</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Flexible Pricing</h3>
+              <p className="text-gray-600 mb-4">Pay only for what you use</p>
               
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600" />
                   <div>
@@ -244,10 +244,10 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Designed for Everyone</h3>
-              <p className="text-gray-600 mb-6">No technical skills required</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Designed for Everyone</h3>
+              <p className="text-gray-600 mb-4">No technical skills required</p>
               
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600" />
                   <div>
@@ -287,10 +287,10 @@ export default function Home() {
 
       {/* Final CTA Section */}
             {/* Final CTA Section */}
-      <section className="py-20 px-4 bg-linear-to-r from-emerald-600 to-green-600 text-white">
+      <section className="py-12 px-4 bg-linear-to-r from-emerald-600 to-green-600 text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Streamline Your Deal Creation?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-3">Ready to Streamline Your Deal Creation?</h2>
+          <p className="text-xl mb-6 opacity-90 max-w-2xl mx-auto">
             Launch your first Deal ID today. No fees, no contracts, simply deals sent to your DSP of choice.
           </p>
           <Link href="/gate">

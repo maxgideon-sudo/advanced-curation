@@ -20,7 +20,7 @@ export default function AgenticValuePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
+      <section className="relative py-12 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             The Power of
@@ -35,15 +35,15 @@ export default function AgenticValuePage() {
       </section>
 
       {/* What is Agentic AI */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">What Makes Our AI &quot;Agentic&quot;?</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">What Makes Our AI &quot;Agentic&quot;?</h2>
+              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
                 Traditional automation follows rigid rules. Agentic AI systems act autonomously, making context-aware decisions and adapting to changing conditions in real-time.
               </p>
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 <div className="flex items-center">
                   <CheckCircle className="w-6 h-6 text-emerald-600 mr-3" />
                   <span className="text-gray-700">Autonomous decision-making based on campaign goals</span>
