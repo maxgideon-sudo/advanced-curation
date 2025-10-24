@@ -1,0 +1,133 @@
+// Advanced Curation Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  collections Collection[]
+  items       Item[]
+  comments    Comment[]
+  favorites   Favorite[]
+
+  @@map("users")
+}
+
+model Collection {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  slug        String   @unique
+  isPublic    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items  Item[]
+  tags   Tag[]
+
+  @@map("collections")
+}
+
+model Item {
+  id          String      @id @default(cuid())
+  title       String
+  description String?
+  url         String?
+  content     String?
+  imageUrl    String?
+  type        ContentType @default(ARTICLE)
+  status      ItemStatus  @default(ACTIVE)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  // Relations
+  userId       String
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  collectionId String
+  collection   Collection   @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  comments     Comment[]
+  favorites    Favorite[]
+  tags         Tag[]
+
+  @@map("items")
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  color     String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  collections Collection[]
+  items       Item[]
+
+  @@map("tags")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId String
+  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId String
+  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+  @@map("favorites")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ContentType {
+  ARTICLE
+  VIDEO
+  IMAGE
+  AUDIO
+  DOCUMENT
+  LINK
+  OTHER
+}
+
+enum ItemStatus {
+  ACTIVE
+  ARCHIVED
+  DRAFT
+}
