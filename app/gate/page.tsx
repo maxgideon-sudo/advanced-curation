@@ -169,10 +169,16 @@ export default function GatePage() {
                 Contact us to request access to our AI-powered deal creation platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/20">
+                <Button 
+                  variant="outline" 
+                  className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:border-white/70 backdrop-blur-sm"
+                >
                   Request Access
                 </Button>
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/20">
+                <Button 
+                  variant="outline" 
+                  className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:border-white/70 backdrop-blur-sm"
+                >
                   Contact Sales
                 </Button>
               </div>

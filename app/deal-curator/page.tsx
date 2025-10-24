@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,37 +9,19 @@ import Link from "next/link"
 import { useRouter } from 'next/navigation'
 
 export default function DealCuratorPage() {
-  const [hasAccess, setHasAccess] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
     // Check if user has passed through the gate
-    const access = sessionStorage.getItem('deal_curator_access')
-    if (access === 'granted') {
-      setHasAccess(true)
-    } else {
-      // Redirect to gate page if no access
-      router.replace('/gate')
-      return
+    if (typeof window !== 'undefined') {
+      const access = sessionStorage.getItem('deal_curator_access')
+      if (access !== 'granted') {
+        // Redirect to gate page if no access
+        router.replace('/gate')
+      }
     }
-    setIsLoading(false)
   }, [router])
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-linear-to-br from-emerald-400 via-green-500 to-teal-600 flex items-center justify-center">
-        <div className="text-center text-white">
-          <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p>Verifying access...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (!hasAccess) {
-    return null // This shouldn't render since we redirect, but just in case
-  }
   return (
     <div className="min-h-screen bg-linear-to-br from-emerald-400 via-green-500 to-teal-600">
       {/* Header */}
@@ -51,7 +33,7 @@ export default function DealCuratorPage() {
             </Link>
             <div className="flex items-center space-x-4">
               <Link href="/dashboard">
-                <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/20 hover:text-white">
+                <Button variant="outline" size="sm" className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/70 backdrop-blur-sm">
                   Client Login
                 </Button>
               </Link>
