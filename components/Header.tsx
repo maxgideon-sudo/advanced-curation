@@ -76,15 +76,15 @@ export default function Header({
 
   return (
     <header className={headerStyles[variant]}>
-      <div className="container mx-auto px-4 py-5" ref={menuRef}>
+      <div className="container mx-auto px-4 py-6" ref={menuRef}>
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image 
               src="/AC_LOGO_HORIZONTAL.png" 
               alt="Advanced Curation Logo" 
-              width={280} 
-              height={70} 
-              className={`h-16 w-auto ${logoFilter}`}
+              width={320} 
+              height={80} 
+              className={`h-20 w-auto ${logoFilter}`}
             />
           </Link>
           

@@ -322,11 +322,11 @@ export default function Home() {
             <div>
               <div className="flex items-center mb-4">
                 <Image 
-                  src="/AC_LOGO.png" 
+                  src="/AC_LOGO_INVERTED.png" 
                   alt="Advanced Curation Logo" 
-                  width={48} 
-                  height={48} 
-                  className="h-12 w-auto mr-4"
+                  width={64} 
+                  height={64} 
+                  className="h-16 w-auto mr-4"
                 />
               </div>
               <div className="flex space-x-4">
