@@ -6,7 +6,8 @@ The contact form is now implemented and ready to use. Here's what was added:
 
 1. **`/app/contact/page.tsx`** - The contact page with a comprehensive form
 2. **`/app/api/contact/route.ts`** - API endpoint to handle form submissions and send emails
-3. **Updated `.env.example`** - Added email configuration variables
+3. **`/app/api/test-email/route.ts`** - Diagnostic endpoint to test email configuration
+4. **Updated `.env.example`** - Added email configuration variables
 
 ## Features
 
@@ -66,10 +67,43 @@ Consider using a professional email service like:
 - The form will gracefully handle email service unavailability
 - All form submissions are validated both client and server-side
 
+## Troubleshooting Email Issues
+
+If you're getting `{"error":"Failed to send email"}`, use these diagnostic steps:
+
+### 1. Test Email Configuration
+Visit `/api/test-email` on your deployed site to run diagnostic tests on all SMTP configurations.
+
+### 2. Common GoDaddy/Outlook Issues
+- **Authentication Error**: Use full email address as username
+- **2FA Enabled**: Generate app-specific password instead of regular password
+- **SMTP Not Enabled**: Check email provider settings to enable SMTP
+- **Security Settings**: Disable "less secure apps" blocking or add exception
+
+### 3. SMTP Server Options
+The API now tries multiple configurations:
+1. **Outlook SMTP**: `smtp-mail.outlook.com:587` (STARTTLS)
+2. **GoDaddy SMTP (SSL)**: `smtpout.secureserver.net:465` (SSL)
+3. **GoDaddy SMTP (STARTTLS)**: `smtpout.secureserver.net:587` (STARTTLS)
+
+### 4. Environment Variables
+Ensure these are set in Vercel:
+```
+EMAIL_USER=max@advancedcuration.com
+EMAIL_PASSWORD=your-actual-password-or-app-password
+```
+
+### 5. Check Logs
+Monitor Vercel function logs for detailed error messages including:
+- Connection timeouts
+- Authentication failures
+- SMTP server responses
+
 ## Customization
 
 You can easily modify:
 - Email recipient (currently max@advancedcuration.com)
 - Form fields in `/app/contact/page.tsx`
 - Email template in `/app/api/contact/route.ts`
+- SMTP configurations in `/app/api/contact/route.ts`
 - Styling and layout as needed
