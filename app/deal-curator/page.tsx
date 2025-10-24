@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Target, Calendar, Globe, Upload, Shield } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from 'next/navigation'
 
 export default function DealCuratorPage() {
@@ -28,8 +29,14 @@ export default function DealCuratorPage() {
       <header className="border-b border-green-600/20 bg-white/10 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-white hover:text-green-100 transition-colors">
-              Advanced Curation
+            <Link href="/" className="flex items-center">
+              <Image 
+                src="/AC_LOGO.png" 
+                alt="Advanced Curation Logo" 
+                width={40} 
+                height={40} 
+                className="h-10 w-auto filter brightness-0 invert"
+              />
             </Link>
             <div className="flex items-center space-x-4">
               <Link href="/dashboard">

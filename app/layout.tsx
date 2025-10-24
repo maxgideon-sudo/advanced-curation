@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Advanced Curation - AI-Powered Programmatic Deal Desk",
   description: "Agentic programmatic deal desk for brands and agencies. Create custom Deal IDs and PMPs for programmatic media buying across all media types with AI-powered targeting.",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

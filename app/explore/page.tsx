@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search, Filter, Grid, List } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function ExplorePage() {
   return (
@@ -11,8 +12,14 @@ export default function ExplorePage() {
       <header className="border-b bg-white sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-slate-900">
-              Advanced Curation
+            <Link href="/" className="flex items-center">
+              <Image 
+                src="/AC_LOGO.png" 
+                alt="Advanced Curation Logo" 
+                width={40} 
+                height={40} 
+                className="h-10 w-auto"
+              />
             </Link>
             <div className="flex items-center space-x-4">
               <Button variant="outline" size="sm">Sign In</Button>

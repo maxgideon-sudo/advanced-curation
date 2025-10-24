@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { 
   PlusCircle, 
@@ -10,7 +11,8 @@ import {
   BarChart3, 
   Clock, 
   CheckCircle,
-  Play
+  Play,
+  Menu
 } from "lucide-react"
 
 export default function Home() {
@@ -21,24 +23,51 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold bg-linear-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                Advanced Curation
-              </h1>
-              <span className="text-sm text-gray-600 hidden sm:block">Programmatic Deal Desk</span>
+              <Link href="/" className="flex items-center">
+                <Image 
+                  src="/AC_LOGO.png" 
+                  alt="Advanced Curation Logo" 
+                  width={40} 
+                  height={40} 
+                  className="h-10 w-auto"
+                />
+              </Link>
             </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/dashboard">
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6">
+              <nav className="flex items-center space-x-6">
+                <Link href="/about" className="text-gray-600 hover:text-emerald-600 transition-colors">About</Link>
+                <Link href="/our-team" className="text-gray-600 hover:text-emerald-600 transition-colors">Our Team</Link>
+                <Link href="/how-it-works" className="text-gray-600 hover:text-emerald-600 transition-colors">How It Works</Link>
+                <Link href="/agentic-value" className="text-gray-600 hover:text-emerald-600 transition-colors">Agentic Value</Link>
+              </nav>
+              <div className="flex items-center space-x-4">
+                <Link href="/auth">
+                  <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                    <User className="w-4 h-4 mr-2" />
+                    Client Login
+                  </Button>
+                </Link>
+                <Link href="/gate">
+                  <Button size="sm" className="bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg">
+                    <PlusCircle className="w-4 h-4 mr-2" />
+                    Create Deal ID
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className="md:hidden flex items-center space-x-4">
+              <Link href="/auth">
                 <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                  <User className="w-4 h-4 mr-2" />
-                  Client Login
+                  <User className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link href="/gate">
-                <Button size="sm" className="bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg">
-                  <PlusCircle className="w-4 h-4 mr-2" />
-                  Create Deal ID
-                </Button>
-              </Link>
+              <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                <Menu className="w-4 h-4" />
+              </Button>
             </div>
           </div>
         </div>
@@ -46,21 +75,26 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-emerald-100/20 to-green-100/20"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-emerald-100/20 to-green-100/20 animate-pulse"></div>
+        
+        {/* Animated background elements */}
+        <div className="absolute top-10 left-10 w-20 h-20 bg-emerald-200/30 rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+        <div className="absolute top-32 right-20 w-16 h-16 bg-green-200/30 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+        <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-teal-200/30 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
+        
         <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Programmatic Deal Creation
-            <span className="block bg-linear-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-              Simplified
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in">
+            <span className="inline-block animate-shimmer bg-linear-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text text-transparent bg-size-[200%_auto]">
+              Agentic Ad Planning
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
             Create custom Deal IDs and PMPs for all media types with AI-powered targeting. 
             Launch campaigns in minutes, not weeks. Starting with your first deal today.
           </p>
-          <div className="flex justify-center items-center mb-8">
+          <div className="flex justify-center items-center mb-8 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <Link href="/gate">
-              <Button size="lg" className="text-lg px-8 py-4 bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-xl">
+              <Button size="lg" className="text-lg px-8 py-4 bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                 <PlusCircle className="w-5 h-5 mr-2" />
                 Launch Your Deal
               </Button>
@@ -96,62 +130,62 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-linear-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-6 h-6 text-emerald-600" />
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+                <Zap className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">AI-Powered Creation</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">AI-Powered Creation</h3>
+              <p className="text-gray-600 group-hover:text-gray-700">
                 Use our AI-powered targeting tools or manual setup. Get professional-quality Deal IDs in seconds with intelligent recommendations.
               </p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-linear-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Target className="w-6 h-6 text-emerald-600" />
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+                <Target className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Smart Targeting</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Smart Targeting</h3>
+              <p className="text-gray-600 group-hover:text-gray-700">
                 Reach your ideal customers by location, media type, and DSP with precision. CTV, OLV, Display, and In-App support.
               </p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-linear-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-6 h-6 text-emerald-600" />
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+                <DollarSign className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Flexible Pricing</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Flexible Pricing</h3>
+              <p className="text-gray-600 group-hover:text-gray-700">
                 Start small and scale up. No minimum commitments or hidden fees. Pay only for the deals you activate.
               </p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-linear-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-6 h-6 text-emerald-600" />
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+                <BarChart3 className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Real-Time Analytics</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Real-Time Analytics</h3>
+              <p className="text-gray-600 group-hover:text-gray-700">
                 Track deal performance, campaign metrics, and ROI with comprehensive dashboards and insights.
               </p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-linear-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-6 h-6 text-emerald-600" />
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+                <Shield className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Enterprise Security</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Enterprise Security</h3>
+              <p className="text-gray-600 group-hover:text-gray-700">
                 Bank-grade security, encrypted data, and compliance with industry standards. Your deals are safe with us.
               </p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-linear-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-6 h-6 text-emerald-600" />
+            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-emerald-200">
+              <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
+                <Clock className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Quick Launch</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Quick Launch</h3>
+              <p className="text-gray-600 group-hover:text-gray-700">
                 Our intuitive process gets your Deal IDs created and campaigns live in minutes, not weeks.
               </p>
             </div>
@@ -159,61 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Simple 4-Step Process
-            </h2>
-            <p className="text-xl text-gray-600">
-              From strategy to live Deal ID in under an hour.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
-                1
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Create Deal Plan</h3>
-              <p className="text-gray-600">
-                Tell us about your campaign goals and target audience requirements
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
-                2
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Choose Your Media</h3>
-              <p className="text-gray-600">
-                Select media types: CTV, OLV, Display, or In-App with our smart targeting tools
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
-                3
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Configure DSP Settings</h3>
-              <p className="text-gray-600">
-                Set your DSP, Seat ID, and targeting parameters with AI recommendations
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-linear-to-r from-emerald-600 to-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
-                4
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Deploy & Track</h3>
-              <p className="text-gray-600">
-                Get your Deal ID and track performance with real-time analytics
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials Section */}
       <section className="py-20 px-4 bg-white">
@@ -392,19 +372,22 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-12 px-4 bg-gray-900 text-gray-300">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+                    <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold text-white mb-4">Advanced Curation</h3>
+              <div className="flex items-center mb-4">
+                <Image 
+                  src="/AC_LOGO.png" 
+                  alt="Advanced Curation Logo" 
+                  width={32} 
+                  height={32} 
+                  className="h-8 w-auto mr-3"
+                />
+                <h3 className="text-xl font-bold text-white">Advanced Curation</h3>
+              </div>
               <p className="text-gray-400 mb-4">
                 AI-powered programmatic deal creation for smarter media trading.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <span className="sr-only">Twitter</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                  </svg>
-                </a>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <span className="sr-only">LinkedIn</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -415,32 +398,22 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Product</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Learn More</h4>
               <ul className="space-y-2">
-                <li><Link href="/gate" className="hover:text-white transition-colors">Deal Curator</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Analytics</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Lead Management</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Client Portal</a></li>
+                <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
+                <li><Link href="/our-team" className="hover:text-white transition-colors">Our Team</Link></li>
+                <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
+                <li><Link href="/agentic-value" className="hover:text-white transition-colors">Agentic Value</Link></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Company</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Get Started</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API Docs</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Status</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
+                <li><Link href="/gate" className="hover:text-white transition-colors">Create Deal ID</Link></li>
+                <li><Link href="/auth" className="hover:text-white transition-colors">Client Login</Link></li>
+                <li><a href="#" className="hover:text-white transition-colors">Contact Sales</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
               </ul>
             </div>
           </div>
