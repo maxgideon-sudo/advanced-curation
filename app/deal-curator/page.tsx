@@ -1,10 +1,45 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Target, Calendar, Globe, Upload } from "lucide-react"
+import { Target, Calendar, Globe, Upload, Shield } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from 'next/navigation'
 
 export default function DealCuratorPage() {
+  const [hasAccess, setHasAccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const router = useRouter()
+
+  useEffect(() => {
+    // Check if user has passed through the gate
+    const access = sessionStorage.getItem('deal_curator_access')
+    if (access === 'granted') {
+      setHasAccess(true)
+    } else {
+      // Redirect to gate page if no access
+      router.replace('/gate')
+      return
+    }
+    setIsLoading(false)
+  }, [router])
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-linear-to-br from-emerald-400 via-green-500 to-teal-600 flex items-center justify-center">
+        <div className="text-center text-white">
+          <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p>Verifying access...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!hasAccess) {
+    return null // This shouldn't render since we redirect, but just in case
+  }
   return (
     <div className="min-h-screen bg-linear-to-br from-emerald-400 via-green-500 to-teal-600">
       {/* Header */}
@@ -29,25 +64,12 @@ export default function DealCuratorPage() {
         <div className="max-w-4xl mx-auto">
           {/* Page Header */}
           <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-white" />
+            </div>
             <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">AI-Powered Deal Curator</h1>
             <p className="text-green-100">Create custom Deal IDs and PMPs for your programmatic campaigns</p>
           </div>
-
-          {/* Passcode Section for Leads */}
-          <Card className="mb-8 bg-white/95 backdrop-blur-sm shadow-xl">
-            <CardHeader>
-              <CardTitle className="text-green-700">Access Code Required</CardTitle>
-              <CardDescription>
-                First time creating a deal? Enter the passcode to get started.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex gap-4">
-                <Input placeholder="Enter passcode (1226)" className="max-w-xs" />
-                <Button className="bg-green-600 hover:bg-green-700 text-white">Verify Access</Button>
-              </div>
-            </CardContent>
-          </Card>
 
           {/* Main Deal Creation Form */}
           <Card className="bg-white/95 backdrop-blur-sm shadow-xl">

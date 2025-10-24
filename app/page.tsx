@@ -1,10 +1,8 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
   PlusCircle, 
   Target, 
-  TrendingUp, 
   User, 
   Shield, 
   Zap, 
@@ -12,8 +10,7 @@ import {
   BarChart3, 
   Clock, 
   CheckCircle,
-  Play,
-  Star
+  Play
 } from "lucide-react"
 
 export default function Home() {
@@ -36,7 +33,7 @@ export default function Home() {
                   Client Login
                 </Button>
               </Link>
-              <Link href="/deal-curator">
+              <Link href="/gate">
                 <Button size="sm" className="bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg">
                   <PlusCircle className="w-4 h-4 mr-2" />
                   Create Deal ID
@@ -370,9 +367,10 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <Link href="/deal-curator">
+                        <Link href="/gate">
               <Button size="lg" className="text-lg px-8 py-4 bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-xl">
                 Start Your First Deal
+                <Play className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
@@ -387,7 +385,7 @@ export default function Home() {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Launch your first Deal ID today. AI-powered targeting included.
           </p>
-          <Link href="/deal-curator">
+          <Link href="/gate">
             <Button size="lg" className="text-lg px-8 py-4 bg-white text-emerald-600 hover:bg-gray-50 shadow-xl">
               Get Started Now
             </Button>
@@ -423,7 +421,7 @@ export default function Home() {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Product</h4>
               <ul className="space-y-2">
-                <li><Link href="/deal-curator" className="hover:text-white transition-colors">Deal Curator</Link></li>
+                <li><Link href="/gate" className="hover:text-white transition-colors">Deal Curator</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">Analytics</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Lead Management</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Client Portal</a></li>
