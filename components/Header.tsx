@@ -101,8 +101,8 @@ export default function Header({
 
         {/* Dropdown Menu */}
         {isMenuOpen && (
-          <div className={`absolute top-full left-0 right-0 ${variant === 'glass' ? 'bg-white/95 backdrop-blur-sm' : 'bg-white'} border-b border-gray-200 shadow-lg z-40`}>
-            <div className="container mx-auto px-4 py-4">
+          <div className={`absolute top-full right-0 w-80 ${variant === 'glass' ? 'bg-white/95 backdrop-blur-sm' : 'bg-white'} border border-gray-200 rounded-lg shadow-lg z-40 mt-2`}>
+            <div className="p-4">
               <nav className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
                   <Link 
