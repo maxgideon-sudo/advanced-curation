@@ -47,10 +47,18 @@ cp .env.example .env
 
 Edit `.env` and add your database URL and other configuration:
 ```env
-DATABASE_URL="postgresql://username:password@localhost:5432/advancedcuration"
+# For local development (using Prisma local postgres)
+DATABASE_URL="prisma+postgres://localhost:51213/?api_key=your-api-key"
+
+# For production (using Neon or other PostgreSQL provider)
+# DATABASE_URL="postgresql://username:password@hostname:5432/database?sslmode=require"
+
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_SECRET="your-super-secret-key-change-this-in-production"
+NODE_ENV="development"
 ```
+
+**Important**: Never commit your `.env` file to version control. It's already included in `.gitignore`.
 
 4. Set up the database:
 ```bash
