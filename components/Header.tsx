@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -20,6 +20,24 @@ export default function Header({
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { user, isAuthenticated, logout } = useAuth()
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  // Handle click outside to close menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
 
   // Header styling based on variant
   const headerStyles = {
@@ -58,13 +76,13 @@ export default function Header({
 
   return (
     <header className={headerStyles[variant]}>
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4" ref={menuRef}>
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image 
-              src="/AC_LOGO.png" 
+              src="/AC_LOGO_HORIZONTAL.png" 
               alt="Advanced Curation Logo" 
-              width={40} 
+              width={160} 
               height={40} 
               className={`h-10 w-auto ${logoFilter}`}
             />

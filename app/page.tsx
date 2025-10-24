@@ -324,15 +324,11 @@ export default function Home() {
                 <Image 
                   src="/AC_LOGO.png" 
                   alt="Advanced Curation Logo" 
-                  width={32} 
-                  height={32} 
-                  className="h-8 w-auto mr-3"
+                  width={48} 
+                  height={48} 
+                  className="h-12 w-auto mr-4"
                 />
-                <h3 className="text-xl font-bold text-white">Advanced Curation</h3>
               </div>
-              <p className="text-gray-400 mb-4">
-                AI-powered programmatic deal creation for smarter media trading.
-              </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <span className="sr-only">LinkedIn</span>
