@@ -11,21 +11,39 @@ Your project is currently set up with Prisma's local PostgreSQL server. This is 
 
 ## Production Database with Neon
 
-For production deployment, you'll want to use a hosted PostgreSQL service like Neon.
+For production deployment, you'll want to use a hosted PostgreSQL service like Neon. The easiest way is through Vercel's integration.
 
-### Setting up Neon Database
+### Setting up Neon Database via Vercel Integration (Recommended)
+
+1. **Go to your Vercel Dashboard**
+   - Visit https://vercel.com/dashboard
+   - Click on your "advancedcuration" project
+
+2. **Add Neon Integration**
+   - Go to the "Integrations" tab
+   - Search for "Neon" and click "Add Integration"
+   - Follow the prompts to connect your Neon account
+
+3. **Create Database**
+   - The integration will prompt you to create a new database
+   - Choose name: "advanced-curation-db"
+   - Select region: US East (or your preferred region)
+   - The integration automatically adds `DATABASE_URL` to your Vercel environment variables
+
+4. **Run Database Setup**
+   ```bash
+   # After database is created, run migrations
+   ./scripts/setup-production-db.sh
+   ```
+
+### Alternative: Manual Neon Setup
+
+If you prefer to set up manually:
 
 1. **Go to [Neon Console](https://console.neon.tech/)**
 2. **Create a new project** called "advanced-curation"
-3. **Copy the connection string** (it will look like this):
-   ```
-   postgresql://username:password@ep-hostname.us-east-1.aws.neon.tech/dbname?sslmode=require
-   ```
-
-4. **Update your production environment**:
-   - In Vercel dashboard, go to your project settings
-   - Go to "Environment Variables" 
-   - Update `DATABASE_URL` with your Neon connection string
+3. **Copy the connection string**
+4. **Add to Vercel environment variables**
 
 ### Database Migration
 
