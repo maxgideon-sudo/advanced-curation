@@ -1,6 +1,9 @@
+'use client'
+
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { PlusCircle, MoreHorizontal, Eye, Download, Target, TrendingUp } from "lucide-react"
+import { PlusCircle, MoreHorizontal, Eye, Download, Target, TrendingUp, User, Menu } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -53,6 +56,8 @@ const mockDeals = [
 ]
 
 export default function DashboardPage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-linear-to-br from-emerald-400 via-green-500 to-teal-600">
       {/* Header */}
@@ -68,18 +73,45 @@ export default function DashboardPage() {
                 className="h-10 w-auto filter brightness-0 invert"
               />
             </Link>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm" className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/70 backdrop-blur-sm">
-                Settings
-              </Button>
-              <Link href="/gate">
-                <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white shadow-lg">
-                  <PlusCircle className="w-4 h-4 mr-2" />
-                  New Deal ID
-                </Button>
-              </Link>
-            </div>
+            
+            {/* Hamburger Menu Button */}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/70 backdrop-blur-sm"
+            >
+              <Menu className="w-4 h-4" />
+            </Button>
           </div>
+
+          {/* Dropdown Menu */}
+          {isMenuOpen && (
+            <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg z-40">
+              <div className="container mx-auto px-4 py-4">
+                <nav className="flex flex-col space-y-4">
+                  <Link href="/about" className="text-gray-600 hover:text-emerald-600 transition-colors py-2">About</Link>
+                  <Link href="/our-team" className="text-gray-600 hover:text-emerald-600 transition-colors py-2">Our Team</Link>
+                  <Link href="/how-it-works" className="text-gray-600 hover:text-emerald-600 transition-colors py-2">How It Works</Link>
+                  <Link href="/agentic-value" className="text-gray-600 hover:text-emerald-600 transition-colors py-2">Agentic Value</Link>
+                  <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
+                    <Link href="/auth">
+                      <Button variant="outline" size="sm" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50">
+                        <User className="w-4 h-4 mr-2" />
+                        Client Login
+                      </Button>
+                    </Link>
+                    <Link href="/gate">
+                      <Button size="sm" className="w-full bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg">
+                        <PlusCircle className="w-4 h-4 mr-2" />
+                        Create Deal ID
+                      </Button>
+                    </Link>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 

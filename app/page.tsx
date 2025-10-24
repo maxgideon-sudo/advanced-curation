@@ -1,77 +1,23 @@
+'use client'
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { 
   PlusCircle, 
   Target, 
-  User, 
   Shield, 
   Zap, 
   DollarSign, 
   BarChart3, 
   Clock, 
   CheckCircle,
-  Play,
-  Menu
+  Play
 } from "lucide-react"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-200 bg-white sticky top-0 z-50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="flex items-center">
-                <Image 
-                  src="/AC_LOGO.png" 
-                  alt="Advanced Curation Logo" 
-                  width={40} 
-                  height={40} 
-                  className="h-10 w-auto"
-                />
-              </Link>
-            </div>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
-              <nav className="flex items-center space-x-6">
-                <Link href="/about" className="text-gray-600 hover:text-emerald-600 transition-colors">About</Link>
-                <Link href="/our-team" className="text-gray-600 hover:text-emerald-600 transition-colors">Our Team</Link>
-                <Link href="/how-it-works" className="text-gray-600 hover:text-emerald-600 transition-colors">How It Works</Link>
-                <Link href="/agentic-value" className="text-gray-600 hover:text-emerald-600 transition-colors">Agentic Value</Link>
-              </nav>
-              <div className="flex items-center space-x-4">
-                <Link href="/auth">
-                  <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                    <User className="w-4 h-4 mr-2" />
-                    Client Login
-                  </Button>
-                </Link>
-                <Link href="/gate">
-                  <Button size="sm" className="bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg">
-                    <PlusCircle className="w-4 h-4 mr-2" />
-                    Create Deal ID
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Mobile Navigation */}
-            <div className="md:hidden flex items-center space-x-4">
-              <Link href="/auth">
-                <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                  <User className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                <Menu className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-linear-to-br from-emerald-50 via-green-50 to-teal-50 overflow-hidden">

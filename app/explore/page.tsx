@@ -1,33 +1,13 @@
+'use client'
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search, Filter, Grid, List } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
 
 export default function ExplorePage() {
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <header className="border-b bg-white sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center">
-              <Image 
-                src="/AC_LOGO.png" 
-                alt="Advanced Curation Logo" 
-                width={40} 
-                height={40} 
-                className="h-10 w-auto"
-              />
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">Sign In</Button>
-              <Button size="sm">Create Collection</Button>
-            </div>
-          </div>
-        </div>
-      </header>
 
       <div className="container mx-auto px-4 py-8">
         {/* Search and Filters */}
