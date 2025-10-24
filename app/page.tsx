@@ -31,12 +31,11 @@ export default function Home() {
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in">
             <span className="inline-block animate-shimmer bg-linear-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text text-transparent bg-size-[200%_auto]">
-              Agentic Ad Planning
+              A Real Agentic Deal Desk
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            Create custom Deal IDs and PMPs for all media types with AI-powered targeting. 
-            Launch campaigns in minutes, not weeks. Starting with your first deal today.
+            Create custom Deal IDs for all media types immediately for free. Launch campaigns in minutes, not weeks. Stop waiting replies to your emails! Start with your first deal today.
           </p>
           <div className="flex justify-center items-center mb-8 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <Link href="/gate">
@@ -68,7 +67,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Powerful Tools for Programmatic Deal Creation
+              AC is Purpose Built for Media Buyers and Trading Desks
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Everything you need to create, target, and optimize programmatic deals in one intuitive platform.
@@ -80,9 +79,9 @@ export default function Home() {
               <div className="w-16 h-16 bg-linear-to-r from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-xl">
                 <Zap className="w-8 h-8 text-emerald-600 group-hover:text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">AI-Powered Creation</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Agentic Deal Creation</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
-                Use our AI-powered targeting tools or manual setup. Get professional-quality Deal IDs in seconds with intelligent recommendations.
+                Use our powerful tools to create your custom media plan or manually enter your details and we&rsquo;ll take it from there. Get deals live in seconds.
               </p>
             </div>
 
@@ -102,7 +101,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Flexible Pricing</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
-                Start small and scale up. No minimum commitments or hidden fees. Pay only for the deals you activate.
+                No hidden costs or markups. No changes to your current payment process, no new contracts to sign. Just free deal creation.
               </p>
             </div>
 
@@ -112,7 +111,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Real-Time Analytics</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
-                Track deal performance, campaign metrics, and ROI with comprehensive dashboards and insights.
+                Track performance, campaign metrics, ROI and more with our comprehensive dashboard.
               </p>
             </div>
 
@@ -132,7 +131,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">Quick Launch</h3>
               <p className="text-gray-600 group-hover:text-gray-700">
-                Our intuitive process gets your Deal IDs created and campaigns live in minutes, not weeks.
+                Our intuitive process gets your Deal IDs created and campaigns live in minutes, not days.
               </p>
             </div>
           </div>
@@ -149,7 +148,7 @@ export default function Home() {
               Why Choose Advanced Curation?
             </h2>
             <p className="text-xl text-gray-600">
-              Join hundreds of agencies and brands already running successful programmatic campaigns.
+              Join agencies &amp; brands already running successful programmatic campaigns.
             </p>
           </div>
 
@@ -234,13 +233,7 @@ export default function Home() {
                     <p className="text-sm text-gray-600">Only pay for activated Deal IDs</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600" />
-                  <div>
-                    <span className="font-semibold">Volume Discounts</span>
-                    <p className="text-sm text-gray-600">Save more as you scale</p>
-                  </div>
-                </div>
+
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600" />
                   <div>
@@ -270,13 +263,7 @@ export default function Home() {
                     <p className="text-sm text-gray-600">Average setup time: 15 minutes</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600" />
-                  <div>
-                    <span className="font-semibold">AI-Powered Recommendations</span>
-                    <p className="text-sm text-gray-600">Smart suggestions based on your goals</p>
-                  </div>
-                </div>
+
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600" />
                   <div>
@@ -305,7 +292,7 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-4">Ready to Streamline Your Deal Creation?</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Launch your first Deal ID today. AI-powered targeting included.
+            Launch your first Deal ID today. No fees, no contracts, simply deals sent to your DSP of choice.
           </p>
           <Link href="/gate">
             <Button size="lg" className="text-lg px-8 py-4 bg-white text-emerald-600 hover:bg-gray-50 shadow-xl">
