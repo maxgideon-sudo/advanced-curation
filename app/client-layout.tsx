@@ -19,7 +19,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     }
     
     // Glass effect pages
-    if (['/dashboard', '/deal-curator'].includes(path)) {
+    if (['/dashboard'].includes(path)) {
       return { show: true, variant: 'glass' as const }
     }
     
@@ -31,7 +31,8 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       '/how-it-works', 
       '/agentic-value', 
       '/explore',
-      '/gate'
+      '/gate',
+      '/deal-curator'
     ].includes(path)) {
       return { show: true, variant: 'default' as const }
     }
