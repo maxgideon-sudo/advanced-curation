@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { AuthProvider } from "@/lib/auth-context"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 interface ClientLayoutProps {
   children: React.ReactNode
@@ -33,6 +34,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     <AuthProvider>
       {headerConfig.show && <Header variant={headerConfig.variant} />}
       {children}
+      <Footer />
     </AuthProvider>
   )
 }
