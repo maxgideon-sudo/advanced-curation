@@ -25,17 +25,61 @@ model User {
   @@map("users")
 }
 
+// Dedicated Lead table for tracking potential clients
+model Lead {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  company       String?  // Brand or Agency name
+  phone         String?
+  source        String?  // How they found us (website, referral, etc.)
+  status        LeadStatus @default(NEW)
+  notes         String?  @db.Text
+  lastContact   DateTime?
+  convertedAt   DateTime? // When they became a client
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  deals         Deal[]   // Deals created before conversion
+  convertedToClient Client? @relation("LeadToClient")
+
+  @@map("leads")
+}
+
+// Dedicated Client table for converted leads and direct signups
+model Client {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  password    String   // Required for clients
+  name        String?
+  company     String?  // Brand or Agency name
+  phone       String?
+  billingAddress Json? // Flexible billing address storage
+  subscriptionPlan String? // Future: subscription tiers
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  deals       Deal[]
+  leadId      String?  @unique // Reference to original lead if converted
+  originalLead Lead?   @relation("LeadToClient", fields: [leadId], references: [id])
+
+  @@map("clients")
+}
+
 model Deal {
   id          String   @id @default(cuid())
   dealId      String   @unique // Generated Deal ID for DSP
   email       String?  // For leads who haven't created account yet
-  company     String   // Brand or Agency
-  dsp         String   // Demand Side Platform
-  seatId      String   // DSP Seat ID
+  company     String?  // Brand or Agency name
+  dsp         String   // DSP platform (DV360, TTD, Amazon DSP, etc.)
+  seatId      String?  // DSP Seat ID
+  mediaType   MediaType
   flightStart DateTime?
   flightEnd   DateTime?
   alwaysOn    Boolean  @default(false)
-  mediaType   MediaType
   geoTargeting Json?   // Flexible geo targeting data
   idealInventory String @db.Text // Open text field for OpenAI analysis
   aiAnalysis  String?  @db.Text // Result from OpenAI analysis
@@ -43,9 +87,15 @@ model Deal {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  // Relations
+  // Relations - can be associated with User (legacy), Lead, or Client
   userId String?
   user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  leadId String?
+  lead   Lead?  @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
   
   // Media-specific data
   ctvApps     CtvApp[]
@@ -140,6 +190,16 @@ enum Role {
   LEAD
   CLIENT
   ADMIN
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL_SENT
+  NEGOTIATING
+  CONVERTED
+  LOST
 }
 
 enum MediaType {
