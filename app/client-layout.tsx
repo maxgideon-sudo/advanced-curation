@@ -13,36 +13,22 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   // Define which pages should have headers and their variants
   const getHeaderConfig = (path: string) => {
-    // Admin/protected pages - different header or no header
+    // 404 pages - no header (let the 404 page handle its own branding)
+    if (path.includes('not-found') || path === '/not-found') {
+      return { show: false, variant: 'default' as const }
+    }
+    
+    // Admin/protected pages - admin variant when authenticated
     if (path.startsWith('/admin')) {
       return { show: true, variant: 'admin' as const }
     }
     
-    // Glass effect pages
+    // Dashboard - glass variant when authenticated  
     if (['/dashboard'].includes(path)) {
       return { show: true, variant: 'glass' as const }
     }
     
-    // Public pages - default header
-    if ([
-      '/', 
-      '/about', 
-      '/our-team', 
-      '/how-it-works', 
-      '/agentic-value', 
-      '/explore',
-      '/gate',
-      '/deal-curator'
-    ].includes(path)) {
-      return { show: true, variant: 'default' as const }
-    }
-    
-    // Auth pages or other special pages - no header
-    if (path.startsWith('/auth') || path === '/not-found') {
-      return { show: false, variant: 'default' as const }
-    }
-    
-    // Default: show header for unknown routes
+    // All other pages - default header (until user is authenticated)
     return { show: true, variant: 'default' as const }
   }
 
