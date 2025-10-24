@@ -42,7 +42,7 @@ export default function Header({
   // Header styling based on variant
   const headerStyles = {
     default: "border-b border-gray-200 bg-white sticky top-0 z-50 backdrop-blur-sm",
-    glass: "border-b border-green-600/20 bg-white/10 backdrop-blur-md sticky top-0 z-50",
+    glass: "border-b border-white/20 bg-black/20 backdrop-blur-md sticky top-0 z-50",
     admin: "border-b border-blue-600/20 bg-blue-50/90 backdrop-blur-md sticky top-0 z-50"
   }
 
