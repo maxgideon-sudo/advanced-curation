@@ -58,17 +58,13 @@ export default function Home() {
             Create custom Deal IDs and PMPs for all media types with AI-powered targeting. 
             Launch campaigns in minutes, not weeks. Starting with your first deal today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link href="/deal-curator">
+          <div className="flex justify-center items-center mb-8">
+            <Link href="/gate">
               <Button size="lg" className="text-lg px-8 py-4 bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-xl">
                 <PlusCircle className="w-5 h-5 mr-2" />
                 Launch Your Deal
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-gray-300 text-gray-700 hover:bg-gray-50">
-              <Play className="w-5 h-5 mr-2" />
-              Watch Demo
-            </Button>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-gray-600">
             <div className="flex items-center gap-2">
