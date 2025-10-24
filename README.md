@@ -1,20 +1,22 @@
-# Advanced Curation
+# Advanced Curation - AI-Powered Deal Desk
 
-The ultimate platform for content curation and discovery. Organize articles, videos, links, and more into beautiful collections. Share your curated content with the world or keep it private for yourself.
+Agentic programmatic deal desk platform for brands and agencies to create custom Deal IDs and PMPs for programmatic media buying across all media types with AI-powered targeting.
 
 ## Features
 
-- **Smart Collections**: Organize your content into themed collections with rich metadata and tagging
-- **Social Features**: Share collections, get feedback, and discover content from other curators
-- **Powerful Search**: Find exactly what you're looking for with advanced search and filtering
-- **User Authentication**: Secure user accounts with role-based permissions
-- **Modern UI**: Beautiful, responsive design built with Tailwind CSS
-- **Database Integration**: PostgreSQL database with Prisma ORM
+- **AI-Powered Deal Curation**: Leverage OpenAI to analyze inventory requirements and generate optimal deal targeting
+- **Multi-Media Support**: Create deals across CTV, OLV, Display, and In-App with platform-specific targeting  
+- **DSP Integration Ready**: Generate Deal IDs compatible with major DSPs and manage seat ID validation
+- **Lead to Client Conversion**: Streamlined flow from initial deal creation to client account setup
+- **Comprehensive Targeting**: Geographic targeting (US, States, DMAs, Cities, Zip codes) with CSV uploads
+- **Deal Management**: View, edit, pause, and export all your programmatic deals
+- **PDF Export**: Custom PDF generation for deal targeting and specifications
 
 ## Tech Stack
 
 - **Framework**: Next.js 16 with App Router
-- **Database**: PostgreSQL with Prisma ORM
+- **Database**: PostgreSQL with Prisma ORM  
+- **AI**: OpenAI API integration for deal curation
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Radix UI primitives
 - **Icons**: Lucide React
@@ -24,8 +26,9 @@ The ultimate platform for content curation and discovery. Organize articles, vid
 
 ### Prerequisites
 
-- Node.js 18+ 
-- PostgreSQL database (or use a hosted solution like Neon)
+- Node.js 18+
+- PostgreSQL database (Neon recommended for production)
+- OpenAI API key (for AI-powered deal curation)
 
 ### Installation
 
@@ -45,14 +48,15 @@ npm install
 cp .env.example .env
 ```
 
-Edit `.env` and add your database URL and other configuration:
+Edit `.env` and add your configuration:
 ```env
-# For local development (using Prisma local postgres)
-DATABASE_URL="prisma+postgres://localhost:51213/?api_key=your-api-key"
+# Database (Neon production database)
+DATABASE_URL="postgresql://username:password@hostname:5432/database?sslmode=require"
 
-# For production (using Neon or other PostgreSQL provider)
-# DATABASE_URL="postgresql://username:password@hostname:5432/database?sslmode=require"
+# OpenAI API (for deal curation)
+OPENAI_API_KEY="your-openai-api-key"
 
+# Authentication
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="your-super-secret-key-change-this-in-production"
 NODE_ENV="development"
@@ -66,7 +70,12 @@ npx prisma migrate dev --name init
 npx prisma generate
 ```
 
-5. Run the development server:
+5. Seed the database with test data:
+```bash
+npm run db:seed
+```
+
+6. Run the development server:
 ```bash
 npm run dev
 ```
@@ -77,40 +86,95 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The application uses the following main entities:
 
-- **Users**: User accounts with authentication
-- **Collections**: Curated content collections
-- **Items**: Individual content items within collections
-- **Tags**: Categorization and filtering
-- **Comments**: Social interaction on items
-- **Favorites**: User bookmarking system
+### Core Entities
+- **Users**: Lead and Client accounts with authentication
+- **Deals**: Programmatic deal records with targeting specifications
+- **DSPs**: Demand Side Platform reference data
+- **SeatIds**: Valid seat ID validation and management
+
+### Media-Specific Targeting
+- **CtvApps**: Connected TV app targeting with bundle IDs
+- **Domains**: Domain lists for OLV and Display campaigns  
+- **InAppItems**: In-app advertising targeting
+
+### Geographic Targeting
+- **States**: US state-level targeting
+- **DMAs**: Designated Market Area targeting
+- **Cities**: City-level targeting  
+- **ZipCodes**: Zip code targeting with CSV upload support
+
+## User Flow
+
+### Lead Flow (First-time Users)
+1. Access Deal Curator with passcode (1226)
+2. Fill out deal details form
+3. AI analyzes ideal inventory description
+4. Create account (convert to Client) 
+5. Receive Deal ID and PDF export
+
+### Client Flow (Returning Users)
+1. Login to dashboard
+2. View existing deals
+3. Create new deals via Deal Curator
+4. Manage and edit existing deals
+5. Export deal specifications as PDF
 
 ## API Routes
 
-- `GET /api/collections` - List all public collections
-- `POST /api/collections` - Create a new collection
-- `GET /api/collections/[id]` - Get a specific collection
-- `PUT /api/collections/[id]` - Update a collection
-- `DELETE /api/collections/[id]` - Delete a collection
+### Deal Management
+- `GET /api/collections` - List all deals (supports user filtering)
+- `POST /api/collections` - Create a new deal
+- `GET /api/collections/[id]` - Get a specific deal
+- `PUT /api/collections/[id]` - Update a deal  
+- `DELETE /api/collections/[id]` - Delete a deal
+
+### Reference Data
+- `GET /api/dsps` - List available DSPs
+- `GET /api/seat-ids` - Validate seat IDs
+- `GET /api/geo-targeting` - Geographic targeting options
 
 ## Pages
 
-- `/` - Homepage with features and sample collections
-- `/explore` - Browse and search all public collections
-- `/dashboard` - User dashboard for managing collections
-- `/collections/[id]` - Individual collection view
+- `/` - Homepage with platform overview and features
+- `/deal-curator` - AI-powered deal creation form (passcode: 1226 for leads)
+- `/dashboard` - Client dashboard for managing deals
+- `/deals/[id]` - Individual deal view and editing
+- `/about` - Platform information
+- `/contact` - Contact and support
+
+## AI Integration
+
+The platform uses OpenAI's API to analyze the "Ideal Inventory" description and provide:
+- Optimized targeting recommendations
+- Inventory quality scoring  
+- Campaign optimization suggestions
+- Audience matching insights
 
 ## Deployment
 
-This application is designed to be deployed on Vercel with a PostgreSQL database (such as Neon).
+This application is designed to be deployed on Vercel with a PostgreSQL database (Neon recommended).
 
-1. Deploy to Vercel
-2. Set up your database and add the connection string to environment variables
-3. Run the database migrations in production
+### Environment Variables for Production
+Set these in your Vercel project settings:
+
+```env
+DATABASE_URL="your-neon-connection-string"
+OPENAI_API_KEY="your-openai-api-key"
+NEXTAUTH_URL="https://your-app-domain.vercel.app"
+NEXTAUTH_SECRET="your-long-random-secret-key"
+NODE_ENV="production"
+```
+
+### Deployment Steps
+1. Connect GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on git push
+4. Run database migrations in production
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch  
 3. Make your changes
 4. Add tests if applicable
 5. Submit a pull request

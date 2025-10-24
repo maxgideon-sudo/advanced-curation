@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Advanced Curation - Curate Content That Matters",
-  description: "The ultimate platform for content curation and discovery. Organize articles, videos, links, and more into beautiful collections.",
+  title: "Advanced Curation - AI-Powered Programmatic Deal Desk",
+  description: "Agentic programmatic deal desk for brands and agencies. Create custom Deal IDs and PMPs for programmatic media buying across all media types with AI-powered targeting.",
 };
 
 export default function RootLayout({

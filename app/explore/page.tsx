@@ -65,7 +65,7 @@ export default function ExplorePage() {
           {Array.from({ length: 12 }, (_, i) => (
             <Card key={i} className="hover:shadow-lg transition-shadow cursor-pointer">
               <CardHeader>
-                <div className="w-full h-40 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-lg mb-4"></div>
+                <div className="w-full h-40 bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-lg mb-4"></div>
                 <CardTitle className="text-lg">Collection {i + 1}</CardTitle>
                 <CardDescription>
                   A comprehensive collection of curated content about modern web development practices and trends.
@@ -73,8 +73,8 @@ export default function ExplorePage() {
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between text-sm text-slate-500 mb-3">
-                  <span>{Math.floor(Math.random() * 50) + 5} items</span>
-                  <span>{Math.floor(Math.random() * 30) + 1} days ago</span>
+                  <span>{25} items</span>
+                  <span>{7} days ago</span>
                 </div>
                 <div className="flex items-center space-x-2 mb-3">
                   <div className="w-6 h-6 bg-slate-300 rounded-full"></div>

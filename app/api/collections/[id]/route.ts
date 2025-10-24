@@ -1,121 +1,106 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
 export async function GET(
-  request: NextRequest,
+  request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params
-    const collection = await prisma.collection.findUnique({
+    const deal = await prisma.deal.findUnique({
       where: { id },
       include: {
         user: {
           select: {
+            id: true,
             name: true,
-            avatar: true
+            email: true
           }
         },
-        tags: true,
-        items: {
-          include: {
-            tags: true,
-            _count: {
-              select: {
-                comments: true,
-                favorites: true
-              }
-            }
-          },
-          orderBy: {
-            createdAt: 'desc'
-          }
-        }
+        ctvApps: true,
+        domains: true,
+        inAppList: true
       }
     })
 
-    if (!collection) {
+    if (!deal) {
       return NextResponse.json(
-        { error: 'Collection not found' },
+        { error: "Deal not found" },
         { status: 404 }
       )
     }
 
-    return NextResponse.json(collection)
+    return NextResponse.json(deal)
   } catch (error) {
-    console.error('Error fetching collection:', error)
+    console.error("Error fetching deal:", error)
     return NextResponse.json(
-      { error: 'Failed to fetch collection' },
+      { error: "Failed to fetch deal" },
       { status: 500 }
     )
   }
 }
 
 export async function PUT(
-  request: NextRequest,
+  request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params
     const body = await request.json()
-    const { title, description, isPublic, tags = [] } = body
+    const { dealId, company, dsp, mediaType, flightStart, flightEnd, alwaysOn, idealInventory, status } = body
 
-    const collection = await prisma.collection.update({
+    const deal = await prisma.deal.update({
       where: { id },
       data: {
-        title,
-        description,
-        isPublic,
-        slug: title.toLowerCase().replace(/\s+/g, '-'),
-        tags: {
-          set: [],
-          connectOrCreate: tags.map((tagName: string) => ({
-            where: { name: tagName },
-            create: { name: tagName }
-          }))
-        }
+        dealId,
+        company,
+        dsp,
+        mediaType,
+        flightStart: flightStart ? new Date(flightStart) : null,
+        flightEnd: flightEnd ? new Date(flightEnd) : null,
+        alwaysOn,
+        idealInventory,
+        status
       },
       include: {
         user: {
           select: {
+            id: true,
             name: true,
-            avatar: true
+            email: true
           }
         },
-        tags: true,
-        _count: {
-          select: {
-            items: true
-          }
-        }
+        ctvApps: true,
+        domains: true,
+        inAppList: true
       }
     })
 
-    return NextResponse.json(collection)
+    return NextResponse.json(deal)
   } catch (error) {
-    console.error('Error updating collection:', error)
+    console.error("Error updating deal:", error)
     return NextResponse.json(
-      { error: 'Failed to update collection' },
+      { error: "Failed to update deal" },
       { status: 500 }
     )
   }
 }
 
 export async function DELETE(
-  request: NextRequest,
+  request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params
-    await prisma.collection.delete({
+    await prisma.deal.delete({
       where: { id }
     })
 
-    return NextResponse.json({ message: 'Collection deleted successfully' })
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error deleting collection:', error)
+    console.error("Error deleting deal:", error)
     return NextResponse.json(
-      { error: 'Failed to delete collection' },
+      { error: "Failed to delete deal" },
       { status: 500 }
     )
   }

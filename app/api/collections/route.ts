@@ -6,31 +6,23 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const page = parseInt(searchParams.get('page') || '1')
     const limit = parseInt(searchParams.get('limit') || '10')
-    const search = searchParams.get('search') || ''
+    const userId = searchParams.get('userId')
 
     const skip = (page - 1) * limit
 
-    const collections = await prisma.collection.findMany({
-      where: {
-        isPublic: true,
-        OR: search ? [
-          { title: { contains: search, mode: 'insensitive' } },
-          { description: { contains: search, mode: 'insensitive' } }
-        ] : undefined
-      },
+    const deals = await prisma.deal.findMany({
+      where: userId ? { userId } : {},
       include: {
         user: {
           select: {
             name: true,
-            avatar: true
+            email: true,
+            company: true
           }
         },
-        tags: true,
-        _count: {
-          select: {
-            items: true
-          }
-        }
+        ctvApps: true,
+        domains: true,
+        inAppList: true
       },
       orderBy: {
         updatedAt: 'desc'
@@ -39,18 +31,12 @@ export async function GET(request: NextRequest) {
       take: limit
     })
 
-    const total = await prisma.collection.count({
-      where: {
-        isPublic: true,
-        OR: search ? [
-          { title: { contains: search, mode: 'insensitive' } },
-          { description: { contains: search, mode: 'insensitive' } }
-        ] : undefined
-      }
+    const total = await prisma.deal.count({
+      where: userId ? { userId } : {}
     })
 
     return NextResponse.json({
-      collections,
+      deals,
       pagination: {
         page,
         limit,
@@ -59,9 +45,9 @@ export async function GET(request: NextRequest) {
       }
     })
   } catch (error) {
-    console.error('Error fetching collections:', error)
+    console.error('Error fetching deals:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch collections' },
+      { error: 'Failed to fetch deals' },
       { status: 500 }
     )
   }
@@ -70,23 +56,56 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { title, description, isPublic = true, tags = [] } = body
+    const { 
+      email,
+      company,
+      dsp,
+      seatId,
+      flightStart,
+      flightEnd,
+      alwaysOn,
+      mediaType,
+      geoTargeting,
+      idealInventory,
+      ctvApps = [],
+      domains = [],
+      inAppList = [],
+      userId
+    } = body
 
-    // For now, we'll use a mock user ID
-    // In a real app, this would come from authentication
-    const userId = 'mock-user-id'
+    // Generate unique deal ID
+    const dealIdPrefix = `AC-${mediaType.toUpperCase()}`
+    const dealCount = await prisma.deal.count()
+    const dealId = `${dealIdPrefix}-${String(dealCount + 1).padStart(3, '0')}`
 
-    const collection = await prisma.collection.create({
+    const deal = await prisma.deal.create({
       data: {
-        title,
-        description,
-        slug: title.toLowerCase().replace(/\s+/g, '-'),
-        isPublic,
+        dealId,
+        email: userId ? undefined : email, // Only store email for leads
+        company,
+        dsp,
+        seatId,
+        flightStart: alwaysOn ? null : new Date(flightStart),
+        flightEnd: alwaysOn ? null : new Date(flightEnd),
+        alwaysOn,
+        mediaType,
+        geoTargeting,
+        idealInventory,
         userId,
-        tags: {
-          connectOrCreate: tags.map((tagName: string) => ({
-            where: { name: tagName },
-            create: { name: tagName }
+        // Create related data
+        ctvApps: {
+          create: ctvApps.map((app: { name: string; bundleId: string }) => ({
+            name: app.name,
+            bundleId: app.bundleId
+          }))
+        },
+        domains: {
+          create: domains.map((domain: string) => ({ domain }))
+        },
+        inAppList: {
+          create: inAppList.map((app: { name: string; bundleId: string }) => ({
+            appName: app.name,
+            bundleId: app.bundleId
           }))
         }
       },
@@ -94,23 +113,21 @@ export async function POST(request: NextRequest) {
         user: {
           select: {
             name: true,
-            avatar: true
+            email: true,
+            company: true
           }
         },
-        tags: true,
-        _count: {
-          select: {
-            items: true
-          }
-        }
+        ctvApps: true,
+        domains: true,
+        inAppList: true
       }
     })
 
-    return NextResponse.json(collection, { status: 201 })
+    return NextResponse.json(deal, { status: 201 })
   } catch (error) {
-    console.error('Error creating collection:', error)
+    console.error('Error creating deal:', error)
     return NextResponse.json(
-      { error: 'Failed to create collection' },
+      { error: 'Failed to create deal' },
       { status: 500 }
     )
   }

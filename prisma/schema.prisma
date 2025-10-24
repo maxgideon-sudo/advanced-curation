@@ -1,4 +1,4 @@
-// Advanced Curation Database Schema
+// Advanced Curation Deal Desk Database Schema
 
 generator client {
   provider = "prisma-client-js"
@@ -12,122 +12,146 @@ datasource db {
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
+  password  String?  // Only set when they convert from Lead to Client
   name      String?
-  avatar    String?
-  role      Role     @default(USER)
+  company   String?  // Brand or Agency name
+  role      Role     @default(LEAD)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   // Relations
-  collections Collection[]
-  items       Item[]
-  comments    Comment[]
-  favorites   Favorite[]
+  deals Deal[]
 
   @@map("users")
 }
 
-model Collection {
+model Deal {
   id          String   @id @default(cuid())
-  title       String
-  description String?
-  slug        String   @unique
-  isPublic    Boolean  @default(true)
+  dealId      String   @unique // Generated Deal ID for DSP
+  email       String?  // For leads who haven't created account yet
+  company     String   // Brand or Agency
+  dsp         String   // Demand Side Platform
+  seatId      String   // DSP Seat ID
+  flightStart DateTime?
+  flightEnd   DateTime?
+  alwaysOn    Boolean  @default(false)
+  mediaType   MediaType
+  geoTargeting Json?   // Flexible geo targeting data
+  idealInventory String @db.Text // Open text field for OpenAI analysis
+  aiAnalysis  String?  @db.Text // Result from OpenAI analysis
+  status      DealStatus @default(ACTIVE)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   // Relations
-  userId String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  items  Item[]
-  tags   Tag[]
-
-  @@map("collections")
+  userId String?
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Media-specific data
+  ctvApps     CtvApp[]
+  domains     Domain[]
+  inAppList   InAppItem[]
+  
+  @@map("deals")
 }
 
-model Item {
-  id          String      @id @default(cuid())
-  title       String
-  description String?
-  url         String?
-  content     String?
-  imageUrl    String?
-  type        ContentType @default(ARTICLE)
-  status      ItemStatus  @default(ACTIVE)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-
-  // Relations
-  userId       String
-  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  collectionId String
-  collection   Collection   @relation(fields: [collectionId], references: [id], onDelete: Cascade)
-  comments     Comment[]
-  favorites    Favorite[]
-  tags         Tag[]
-
-  @@map("items")
+model DSP {
+  id   String @id @default(cuid())
+  name String @unique
+  code String @unique // Short code for the DSP
+  
+  @@map("dsps")
 }
 
-model Tag {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  color     String?
-  createdAt DateTime @default(now())
-
-  // Relations
-  collections Collection[]
-  items       Item[]
-
-  @@map("tags")
+model SeatId {
+  id    String @id @default(cuid())
+  seatId String @unique
+  dspId String
+  name  String? // Optional name/description
+  
+  @@map("seat_ids")
 }
 
-model Comment {
-  id        String   @id @default(cuid())
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  userId String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  itemId String
-  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
-
-  @@map("comments")
+model CtvApp {
+  id       String @id @default(cuid())
+  name     String
+  bundleId String @unique
+  dealId   String
+  deal     Deal   @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  
+  @@map("ctv_apps")
 }
 
-model Favorite {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
+model Domain {
+  id     String @id @default(cuid())
+  domain String
+  dealId String
+  deal   Deal   @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  
+  @@map("domains")
+}
 
-  // Relations
-  userId String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  itemId String
-  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+model InAppItem {
+  id       String @id @default(cuid())
+  appName  String
+  bundleId String
+  dealId   String
+  deal     Deal   @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  
+  @@map("in_app_items")
+}
 
-  @@unique([userId, itemId])
-  @@map("favorites")
+// Geo targeting reference data
+model State {
+  id   String @id @default(cuid())
+  name String @unique
+  code String @unique // State abbreviation
+  
+  @@map("states")
+}
+
+model DMA {
+  id   String @id @default(cuid())
+  name String @unique
+  code String @unique
+  
+  @@map("dmas")
+}
+
+model City {
+  id      String @id @default(cuid())
+  name    String
+  state   String
+  stateCode String
+  
+  @@map("cities")
+}
+
+model ZipCode {
+  id   String @id @default(cuid())
+  zip  String @unique
+  city String
+  state String
+  
+  @@map("zip_codes")
 }
 
 enum Role {
-  USER
+  LEAD
+  CLIENT
   ADMIN
 }
 
-enum ContentType {
-  ARTICLE
-  VIDEO
-  IMAGE
-  AUDIO
-  DOCUMENT
-  LINK
-  OTHER
+enum MediaType {
+  CTV
+  OLV
+  DISPLAY
+  IN_APP
 }
 
-enum ItemStatus {
+enum DealStatus {
   ACTIVE
-  ARCHIVED
+  PAUSED
+  EXPIRED
   DRAFT
 }
