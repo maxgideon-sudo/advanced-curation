@@ -32,24 +32,88 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create email transporter (Outlook/Office 365 SMTP)
+    // Create email transporter for GoDaddy/Outlook SMTP
     const transporter = nodemailer.createTransport({
       host: 'smtp-mail.outlook.com',
       port: 587,
-      secure: false, // true for 465, false for other ports
+      secure: false, // STARTTLS
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
       tls: {
-        ciphers: 'SSLv3'
-      }
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false // For some GoDaddy setups
+      },
+      // Additional options for GoDaddy compatibility
+      connectionTimeout: 60000, // 60 seconds
+      greetingTimeout: 30000, // 30 seconds
+      socketTimeout: 60000, // 60 seconds
     })
 
-    // Verify transporter configuration
-    await transporter.verify()
+    // Verify transporter configuration with detailed error handling
+    try {
+      await transporter.verify()
+      console.log('SMTP connection verified successfully')
+    } catch (verifyError) {
+      console.error('SMTP verification failed:', verifyError)
+      
+      // Try alternative GoDaddy SMTP settings
+      const alternativeTransporter = nodemailer.createTransport({
+        host: 'smtpout.secureserver.net', // GoDaddy's SMTP server
+        port: 465,
+        secure: true, // SSL
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+      })
+      
+      try {
+        await alternativeTransporter.verify()
+        console.log('Alternative GoDaddy SMTP verified successfully')
+        // Use the alternative transporter for sending
+        const emailContent = `
+New contact form submission from Advanced Curation website:
 
-    // Email content
+Name: ${name}
+Email: ${email}
+Company: ${company || 'Not provided'}
+Subject: ${subject}
+
+Message:
+${message}
+
+---
+This message was sent from the Advanced Curation contact form.
+Reply directly to ${email} to respond to the sender.
+        `.trim()
+
+        await alternativeTransporter.sendMail({
+          from: `"Advanced Curation Contact Form" <${process.env.EMAIL_USER}>`,
+          to: 'max@advancedcuration.com',
+          subject: `Contact Form: ${subject}`,
+          text: emailContent,
+          replyTo: email,
+        })
+
+        return NextResponse.json(
+          { message: 'Email sent successfully' },
+          { status: 200 }
+        )
+      } catch (altError) {
+        console.error('Both SMTP configurations failed:', altError)
+        return NextResponse.json(
+          { error: 'Email service configuration error' },
+          { status: 500 }
+        )
+      }
+    }
+
+    // If we reach here, the primary SMTP is working
     const emailContent = `
 New contact form submission from Advanced Curation website:
 
@@ -66,7 +130,7 @@ This message was sent from the Advanced Curation contact form.
 Reply directly to ${email} to respond to the sender.
     `.trim()
 
-    // Send email
+    // Send email using primary transporter
     await transporter.sendMail({
       from: `"Advanced Curation Contact Form" <${process.env.EMAIL_USER}>`,
       to: 'max@advancedcuration.com',
@@ -85,6 +149,29 @@ Reply directly to ${email} to respond to the sender.
     // Log more specific error information
     if (error instanceof Error) {
       console.error('Error details:', error.message)
+      console.error('Error stack:', error.stack)
+      
+      // Provide more specific error responses based on error type
+      if (error.message.includes('authentication') || error.message.includes('auth')) {
+        return NextResponse.json(
+          { error: 'Email authentication failed - check credentials' },
+          { status: 500 }
+        )
+      }
+      
+      if (error.message.includes('connection') || error.message.includes('timeout')) {
+        return NextResponse.json(
+          { error: 'Email server connection failed' },
+          { status: 500 }
+        )
+      }
+      
+      if (error.message.includes('SMTP')) {
+        return NextResponse.json(
+          { error: 'SMTP configuration error' },
+          { status: 500 }
+        )
+      }
     }
     
     return NextResponse.json(
