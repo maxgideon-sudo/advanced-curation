@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { MapPin, Phone, Send } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -87,16 +87,6 @@ export default function ContactPage() {
               </p>
 
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">max@advancedcuration.com</p>
-                  </div>
-                </div>
-
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0">
                     <MapPin className="w-6 h-6 text-emerald-600" />
