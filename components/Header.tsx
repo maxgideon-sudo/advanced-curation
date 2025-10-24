@@ -53,8 +53,12 @@ export default function Header({
     admin: "border-blue-300 text-blue-700 hover:bg-blue-50"
   }
 
-  // Logo styling based on variant
-  const logoFilter = variant === 'glass' ? "filter brightness-0 invert" : ""
+  // Logo configuration based on variant
+  const logoConfig = {
+    default: { src: "/AC_LOGO_HORIZONTAL.png", width: 280, height: 70, filter: "" },
+    glass: { src: "/AC_LOGO_INVERTED.png", width: 64, height: 64, filter: "" },
+    admin: { src: "/AC_LOGO_HORIZONTAL.png", width: 280, height: 70, filter: "" }
+  }[variant]
 
   // Navigation links for public users
   const publicNavLinks = [
@@ -80,11 +84,11 @@ export default function Header({
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image 
-              src="/AC_LOGO_HORIZONTAL.png" 
+              src={logoConfig.src} 
               alt="Advanced Curation Logo" 
-              width={280} 
-              height={70} 
-              className={`h-16 w-auto ${logoFilter}`}
+              width={logoConfig.width} 
+              height={logoConfig.height} 
+              className={`h-16 w-auto ${logoConfig.filter}`}
             />
           </Link>
           
