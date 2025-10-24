@@ -44,7 +44,7 @@ export default function GatePage() {
             </Link>
             <div className="flex items-center space-x-4">
               <Link href="/dashboard">
-                <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/20 hover:text-white">
+                <Button variant="outline" size="sm" className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/70 backdrop-blur-sm">
                   Client Login
                 </Button>
               </Link>

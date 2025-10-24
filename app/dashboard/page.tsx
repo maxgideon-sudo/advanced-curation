@@ -62,10 +62,10 @@ export default function DashboardPage() {
               Advanced Curation
             </Link>
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/20 hover:text-white">
+              <Button variant="outline" size="sm" className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/70 backdrop-blur-sm">
                 Settings
               </Button>
-              <Link href="/deal-curator">
+              <Link href="/gate">
                 <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white shadow-lg">
                   <PlusCircle className="w-4 h-4 mr-2" />
                   New Deal ID
