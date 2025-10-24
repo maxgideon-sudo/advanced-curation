@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function Footer() {
   return (
-    <footer className="py-12 px-4 bg-gray-900 text-gray-300">
+    <footer className="py-8 px-4 bg-gray-900 text-gray-300">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
@@ -43,8 +43,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/gate" className="hover:text-white transition-colors">Create Deal ID</Link></li>
               <li><Link href="/auth" className="hover:text-white transition-colors">Client Login</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact Sales</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
         </div>
